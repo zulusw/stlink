@@ -459,7 +459,7 @@ static const char* const memory_map_template_F7 =
     "  <memory type=\"flash\" start=\"0x08020000\" length=\"0x20000\">"     // Sector 4
     "    <property name=\"blocksize\">0x20000</property>"                   // 128kB
     "  </memory>"
-    "  <memory type=\"flash\" start=\"0x08040000\" length=\"0xC0000\">"     // Sectors 5..7
+    "  <memory type=\"flash\" start=\"0x08040000\" length=\"0x1C0000\">"    // Sectors 5..7
     "    <property name=\"blocksize\">0x40000</property>"                   // 128kB
     "  </memory>"
     "  <memory type=\"ram\" start=\"0x40000000\" length=\"0x1fffffff\"/>"   // peripheral regs
@@ -1118,6 +1118,7 @@ int serve(stlink_t *sl, st_state_t *st) {
                 if(!strcmp(queryName, "Supported")) {
                     if(sl->chip_id==STLINK_CHIPID_STM32_F4
                        || sl->chip_id==STLINK_CHIPID_STM32_F4_HD
+                       || sl->chip_id==STLINK_CHIPID_STM32_F446
                        || sl->core_id==STM32F7_CORE_ID) {
                         reply = strdup("PacketSize=3fff;qXfer:memory-map:read+;qXfer:features:read+");
                     }
