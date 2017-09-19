@@ -5,15 +5,6 @@
 #define _USE_W32_SOCKETS 1
 #include <windows.h>
 
-#define ENOTCONN        WSAENOTCONN
-#define EWOULDBLOCK     WSAEWOULDBLOCK
-#define ENOBUFS         WSAENOBUFS
-#define ECONNRESET      WSAECONNRESET
-#define ESHUTDOWN       WSAESHUTDOWN
-#define EAFNOSUPPORT    WSAEAFNOSUPPORT
-#define EPROTONOSUPPORT WSAEPROTONOSUPPORT
-#define EINPROGRESS     WSAEINPROGRESS
-#define EISCONN         WSAEISCONN
 
 /* winsock doesn't feature poll(), so there is a version implemented
  * in terms of select() in mingw.c. The following definitions
@@ -66,5 +57,6 @@ ssize_t win32_read_socket(SOCKET fd, void *buf, int n);
 ssize_t win32_write_socket(SOCKET fd, void *buf, int n);
 
 static inline void sleep(unsigned ms) { Sleep(ms); }
+void usleep(DWORD waitTime);
 
 #endif
