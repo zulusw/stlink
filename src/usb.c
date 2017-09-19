@@ -907,9 +907,9 @@ stlink_t *stlink_open_usb(enum ugly_loglevel verbose, bool reset, char serial[16
         stlink_exit_dfu_mode(sl);
     }
 
-    if (stlink_current_mode(sl) != STLINK_DEV_DEBUG_MODE) {
+    //if (stlink_current_mode(sl) != STLINK_DEV_DEBUG_MODE) {
         stlink_enter_swd_mode(sl);
-    }
+    //}
 	
     // Initialize stlink version (sl->version)	
     stlink_version(sl);	
